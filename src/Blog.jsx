@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom"
-import { Header } from "./components"
+import { Header, Footer } from "./components"
 
 import styled from "styled-components"
 
@@ -27,8 +27,10 @@ export default function Blog() {
   return (
     <AppColumn>
       <Header />
+
       <Content className="app">
         <H2>Контент страницы</H2>
+
         <Routes>
           <Route path="/" element={<div>Главная</div>} />
           <Route path="/login" element={<div>Авторизация</div>} />
@@ -39,7 +41,8 @@ export default function Blog() {
           <Route path="*" element={<div>Ошибка</div>} />
         </Routes>
       </Content>
-      <footer>Подвал</footer>
+
+      <Footer />
     </AppColumn>
   )
 }
