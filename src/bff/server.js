@@ -1,6 +1,11 @@
-import { getUser, addUser, createSession } from "./bff"
+import { getUser } from "./getUser"
+import { addUser } from "./addUser"
+import { sessions } from "./sessions"
 
 export const server = {
+  async logout(session) {
+    sessions.remove(session)
+  },
   async authorize(authLogin, authPassword) {
     const user = await getUser(authLogin)
 
@@ -20,7 +25,12 @@ export const server = {
 
     return {
       error: null,
-      response: createSession(user.role_id),
+      response: {
+        id: user.id,
+        login: user.login,
+        roleId: user.role_id,
+        session: sessions.create(user),
+      },
     }
   },
   async registration(regLogin, regPassword) {
@@ -37,7 +47,12 @@ export const server = {
 
     return {
       error: null,
-      response: createSession(user.role_id),
+      response: {
+        id: user.id,
+        login: user.login,
+        roleId: user.role_id,
+        session: sessions.create(user),
+      },
     }
   },
 }

@@ -1,3 +1,4 @@
-export function getUsers() {
-  fetch("http://localhost:3005/users").then((loadedUsers) => loadedUsers.json())
+export async function getUsers() {
+  const loadedUsers = await fetch("http://localhost:3005/users")
+  return loadedUsers.json()
 }

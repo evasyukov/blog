@@ -1,4 +1,1 @@
-export * from "./generateDate"
-export * from "./getUsers"
-export * from "./getUser"
-export * from "./createSession"
+export { server } from "./server"

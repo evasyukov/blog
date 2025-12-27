@@ -1,48 +1,55 @@
 import styled from "styled-components"
 import { Link, useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
 
-import { Icon } from "../../../../components"
+import { Icon, Button } from "../../../../components"
+import { ROLE } from "../../../../constans"
+import {
+  selectUserRole,
+  selectUserLogin,
+  selectUserSession,
+} from "../../../../selectors"
+import { logout } from "../../../../actions"
 
 const RightAligned = styled.div`
   display: flex;
   justify-content: flex-end;
 `
 
-const StyledLink = styled(Link)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 100px;
-  height: 30px;
-
-  font-size: 18px;
-  user-select: none;
-
-  border: 1px solid #000;
-  border-radius: 7px;
-
+const StyledIcon = styled.div`
   &:hover {
-    background-color: #ddddddd0;
+    cursor: pointer;
   }
-`
-
-const Button = styled.div`
-  cursor: pointer;
 `
 
 function ControlPanelContainer({ className }) {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const roleId = useSelector(selectUserRole)
+  const login = useSelector(selectUserLogin)
+  const session = useSelector(selectUserSession)
 
   return (
     <div className={className}>
       <RightAligned>
-        <StyledLink to="/login">Войти</StyledLink>
+        <Button>
+          {roleId === ROLE.GUEST ? (
+            <Link to="/login">Войти</Link>
+          ) : (
+            <>
+              <div> {login} </div>
+              <StyledIcon onClick={() => dispatch(logout(session))}>
+                <Icon iconId="fa-sing-out" margin="16px 0 0 0" />
+              </StyledIcon>
+            </>
+          )}
+        </Button>
       </RightAligned>
       <RightAligned>
-        <Button onClick={() => navigate(-1)}>
+        <StyledIcon onClick={() => navigate(-1)}>
           <Icon iconId="fa-backward" margin="16px 0 0 0" />
-        </Button>
+        </StyledIcon>
 
         <Link to="post">
           <Icon iconId="fa-file-text-o" margin="16px 0 0 16px" />
