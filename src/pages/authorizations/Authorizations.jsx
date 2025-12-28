@@ -1,6 +1,6 @@
-import { useState } from "react"
-import { useDispatch } from "react-redux"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector, useStore } from "react-redux"
+import { Link, Navigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -9,6 +9,8 @@ import styled from "styled-components"
 import { server } from "../../bff"
 import { Input, Button, H2 } from "../../components"
 import { setUser } from "../../actions"
+import { selectUserRole } from "../../selectors"
+import { ROLE } from "../../constans"
 
 const authFormSchema = yup.object().shape({
   login: yup
@@ -46,6 +48,7 @@ const ErrorMessage = styled.div`
 function AuthorizationContainer({ className }) {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -57,8 +60,24 @@ function AuthorizationContainer({ className }) {
   })
 
   const [serverError, setServerError] = useState(null)
+  const roleId = useSelector(selectUserRole)
 
   const dispatch = useDispatch()
+  const store = useStore()
+
+  useEffect(() => {
+    let currentWasLogout = store.getState().app.wasLogout
+
+    return store.subscribe(() => {
+      let prevWasLogout = currentWasLogout
+
+      currentWasLogout = store.getState().app.wasLogout
+
+      if (currentWasLogout !== prevWasLogout) {
+        reset()
+      }
+    })
+  }, [store, reset])
 
   function onSubmit({ login, password }) {
     server.authorize(login, password).then(({ error, response }) => {
@@ -74,6 +93,10 @@ function AuthorizationContainer({ className }) {
   const formError = errors?.login?.message || errors?.password?.message
 
   const errorMessage = formError || serverError
+
+  if (roleId !== ROLE.GUEST) {
+    return <Navigate to="/" />
+  }
 
   return (
     <div className={className}>
