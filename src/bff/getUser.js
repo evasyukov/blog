@@ -1,7 +1,5 @@
-import { getUsers } from "./getUsers"
-
 export async function getUser(loginProps) {
-  const users = await getUsers()
-
-  return users.find(({ login }) => login === loginProps)
+  return fetch(`http://localhost:3005/users?login=${loginProps}`)
+    .then((loadedUser) => loadedUser.json())
+    .then(([loadedUser]) => loadedUser)
 }

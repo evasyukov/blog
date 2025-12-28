@@ -34,7 +34,7 @@ export const server = {
     }
   },
   async registration(regLogin, regPassword) {
-    const user = await getUser(regPassword)
+    const user = await getUser(regLogin)
 
     if (user) {
       return {
@@ -43,15 +43,15 @@ export const server = {
       }
     }
 
-    await addUser(regLogin, regPassword)
+    const newUser = await addUser(regLogin, regPassword)
 
     return {
       error: null,
       response: {
-        id: user.id,
-        login: user.login,
-        roleId: user.role_id,
-        session: sessions.create(user),
+        id: newUser.id,
+        login: newUser.login,
+        roleId: newUser.role_id,
+        session: sessions.create(newUser),
       },
     }
   },
