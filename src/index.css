@@ -1,23 +1,27 @@
 @import url('./assets/fonts/font-awesome.css');
-:root {
+
+* {
+  box-sizing: border-box;
+}
+
+body {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  margin: 0;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  background-color: #405060;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+html,
+body,
+#root {
+  height: 100%;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
 }
