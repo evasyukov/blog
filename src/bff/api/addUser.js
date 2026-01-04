@@ -1,4 +1,4 @@
-import { generateDate } from "./generateDate.js"
+import { generateDate } from "../utils"
 
 export function addUser(login, password) {
   return fetch("http://localhost:3005/users", {

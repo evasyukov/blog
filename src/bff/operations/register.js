@@ -1,7 +1,7 @@
 import { getUser, addUser } from "../api"
 import { sessions } from "../sessions"
 
-export async function registration(regLogin, regPassword) {
+export async function register(regLogin, regPassword) {
   const user = await getUser(regLogin)
 
   if (user) {
