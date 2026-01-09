@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 
 import { Icon, Button } from "../../../../components"
-import { ROLE } from "../../../../constans"
+import { ROLE } from "../../../../constants"
 import {
   selectUserRole,
   selectUserLogin,
@@ -16,18 +16,6 @@ const RightAligned = styled.div`
   justify-content: flex-end;
   align-items: center;
 `
-
-const StyledBackIcon = styled.div`
-  &:hover {
-    cursor: pointer;
-  }
-`
-const StyledLogoutIcon = styled.div`
-  &:hover {
-    cursor: pointer;
-  }
-`
-
 const UserName = styled.div`
   font-size: 17px;
   font-weight: bold;
@@ -51,20 +39,20 @@ function ControlPanelContainer({ className }) {
         ) : (
           <>
             <UserName> {login} </UserName>
-            <StyledLogoutIcon>
-              <Icon
-                iconId="fa-sign-out"
-                margin="0 0 0 10px"
-                onClick={() => dispatch(logout(session))}
-              />
-            </StyledLogoutIcon>
+            <Icon
+              iconId="fa-sign-out"
+              margin="0 0 0 10px"
+              onClick={() => dispatch(logout(session))}
+            />
           </>
         )}
       </RightAligned>
       <RightAligned>
-        <StyledBackIcon onClick={() => navigate(-1)}>
-          <Icon iconId="fa-backward" margin="16px 0 0 0" />
-        </StyledBackIcon>
+        <Icon
+          iconId="fa-backward"
+          margin="16px 0 0 0"
+          onClick={() => navigate(-1)}
+        />
 
         <Link to="post">
           <Icon iconId="fa-file-text-o" margin="16px 0 0 16px" />

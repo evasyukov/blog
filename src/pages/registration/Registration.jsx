@@ -12,7 +12,7 @@ import { selectUserRole } from "../../selectors"
 import { useResetForm } from "../../hooks"
 
 import { AuthFormError, Input, Button, H2 } from "../../components"
-import { ROLE } from "../../constans"
+import { ROLE } from "../../constants"
 
 const regFormSchema = yup.object().shape({
   login: yup
@@ -59,7 +59,7 @@ function RegistrationContainer({ className }) {
   useResetForm(reset)
 
   function onSubmit({ login, password }) {
-    server.registration(login, password).then(({ error, response }) => {
+    server.register(login, password).then(({ error, response }) => {
       if (error) {
         setServerError(`Ошибка запроса: ${error}`)
         return

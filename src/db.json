@@ -11,15 +11,8 @@
       "login": "egorka",
       "password": "egorka",
       "registed_at": "1973-06-02 00:05",
-      "role_id": 2,
+      "role_id": 1,
       "id": "2vrosuq"
-    },
-    {
-      "login": "egorka2",
-      "password": "egorka2",
-      "registed_at": "1999-05-24 14:49",
-      "role_id": 2,
-      "id": "vx4R7dK"
     }
   ],
   "roles": [

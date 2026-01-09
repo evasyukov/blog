@@ -1,5 +1,5 @@
 import { sessions } from "../sessions"
 
-export async function logout(session) {
-  return sessions.remove(session)
+export async function logout(userSession) {
+  return sessions.remove(userSession)
 }

@@ -1,8 +1,8 @@
 import { ROLE } from "../constants"
-import { getRoles } from "../api"
+import { getUsers } from "../api"
 import { sessions } from "../sessions"
 
-export async function fetchRoles(userSession) {
+export async function fetchUsers(userSession) {
   const accessRoles = [ROLE.ADMIN]
 
   if (!sessions.access(userSession, accessRoles)) {
@@ -12,10 +12,10 @@ export async function fetchRoles(userSession) {
     }
   }
 
-  const roles = await getRoles()
+  const users = await getUsers()
 
   return {
     error: null,
-    response: roles,
+    response: users,
   }
 }

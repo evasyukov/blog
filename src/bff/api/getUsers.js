@@ -1,4 +1,7 @@
-export async function getUsers() {
-  const loadedUsers = await fetch("http://localhost:3005/users")
-  return loadedUsers.json()
+import { transformUser } from "../transformers"
+
+export function getUsers() {
+  return fetch("http://localhost:3005/users")
+    .then((loadedUsers) => loadedUsers.json())
+    .then((loadedUsers) => loadedUsers && loadedUsers.map(transformUser))
 }

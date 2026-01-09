@@ -12,7 +12,7 @@ import { selectUserRole } from "../../selectors"
 import { useResetForm } from "../../hooks"
 
 import { AuthFormError, Input, Button, H2 } from "../../components"
-import { ROLE } from "../../constans"
+import { ROLE } from "../../constants"
 
 const authFormSchema = yup.object().shape({
   login: yup
