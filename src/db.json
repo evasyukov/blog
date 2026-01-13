@@ -63,5 +63,26 @@
       "published_at": "2026-01-01"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "author_id": "001",
+      "post_id": "001",
+      "published_at": "1981-11-10 07:37",
+      "content": "firts comment",
+      "id": 1
+    }
+  ],
+  "sessions": [
+    {
+      "hash": "0.83988968854786238971144030074356123805046081542969",
+      "user": {
+        "id": "001",
+        "login": "admin",
+        "password": "admin",
+        "registedAt": "2023-01-01",
+        "roleId": 0
+      },
+      "id": 1
+    }
+  ]
 }

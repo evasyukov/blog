@@ -1,21 +1,38 @@
 import { useState } from "react"
 import styled from "styled-components"
+import { useDispatch, useSelector } from "react-redux"
 
 import { Icon } from "../../../../components"
 import { Comment } from "./components"
+import { selectUserId } from "../../../../selectors"
+import { useServerRequest } from "../../../../hooks"
+import { addCommentAsync } from "../../../../actions"
 
-function CommentsContainer({ className, comments }) {
+function CommentsContainer({ className, comments, postId }) {
   const [newComment, setNewComment] = useState("")
+  const userId = useSelector(selectUserId)
+  const dispatch = useDispatch()
+  const requestServer = useServerRequest()
+
+  function onNewCommentAdd(postId, userId, content) {
+    dispatch(addCommentAsync(requestServer, postId, userId, content))
+  }
 
   return (
     <div className={className}>
       <div className="new-comment">
         <textarea
+          name="comment"
           value={newComment}
           placeholder="Комментарий"
           onChange={({ target }) => setNewComment(target.value)}
         ></textarea>
-        <Icon iconId="fa-send-o" margin="0 0 0 10px" size="20px" />
+        <Icon
+          iconId="fa-send-o"
+          margin="0 0 0 10px"
+          size="20px"
+          onClick={() => onNewCommentAdd(userId, postId, newComment)}
+        />
       </div>
 
       <div className="comments">
