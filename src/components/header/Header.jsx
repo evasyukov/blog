@@ -26,10 +26,11 @@ export const Header = styled(HeaderContainer)`
 
   position: fixed;
 
-  height: 130px;
+  height: 120px;
   width: 1000px;
 
   padding: 10px 40px;
 
+  background-color: #fff;
   box-shadow: 0 0 7px 1px rgba(0, 0, 0);
 `
