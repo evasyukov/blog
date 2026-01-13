@@ -66,6 +66,7 @@ function RegistrationContainer({ className }) {
       }
 
       dispatch(setUser(response))
+      sessionStorage.setItem("userData", JSON.stringify(response))
     })
   }
 
