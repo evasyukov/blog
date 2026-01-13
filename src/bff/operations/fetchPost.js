@@ -1,10 +1,12 @@
-import { getPost } from "../api"
+import { getPost, getComments } from "../api"
 
 export async function fetchPost(postId) {
   const post = await getPost(postId)
 
+  const comments = await getComments(postId)
+
   return {
     error: null,
-    response: post,
+    response: { ...post, comments },
   }
 }
