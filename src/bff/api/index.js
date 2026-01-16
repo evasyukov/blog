@@ -3,6 +3,7 @@ export * from "./addComment"
 export * from "./addSession"
 
 export * from "./deleteUser"
+export * from "./deleteComment"
 export * from "./deleteSession"
 
 export * from "./getUser"

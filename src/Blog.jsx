@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { useLayoutEffect } from "react"
 import { useDispatch } from "react-redux"
 
-import { Header, Footer } from "./components"
+import { Header, Footer, Modal } from "./components"
 import { Authorization, Registration, Users, Post } from "./pages"
 import { setUser } from "./actions"
 
@@ -59,6 +59,8 @@ export default function Blog() {
       </Page>
 
       <Footer />
+
+      <Modal />
     </AppColumn>
   )
 }

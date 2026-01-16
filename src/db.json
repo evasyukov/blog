@@ -67,13 +67,6 @@
     {
       "author_id": "001",
       "post_id": "001",
-      "published_at": "1981-11-10 07:37",
-      "content": "firts comment",
-      "id": 1
-    },
-    {
-      "author_id": "001",
-      "post_id": "001",
       "published_at": "1974-04-05 22:29",
       "content": "firts comment 2",
       "id": 2
@@ -81,30 +74,16 @@
     {
       "author_id": "001",
       "post_id": "001",
-      "published_at": "1994-03-19 11:42",
-      "content": "firts comment 2 3",
-      "id": 3
-    },
-    {
-      "author_id": "001",
-      "post_id": "001",
-      "published_at": "1985-11-12 02:09",
-      "content": "firts comment 2 3 4",
+      "published_at": "1994-09-04 18:28",
+      "content": "gewrg erwg werg ",
       "id": 4
     },
     {
       "author_id": "001",
       "post_id": "001",
-      "published_at": "1989-11-08 01:36",
-      "content": "firts comment 2 3 4rferkwhfkwehrfe\nwerjnflkewrjgnewrjkfn\nergnf;lenrg;jrenwjg;ferw",
+      "published_at": "1980-03-18 02:17",
+      "content": "ytrjuryk ",
       "id": 5
-    },
-    {
-      "author_id": "001",
-      "post_id": "001",
-      "published_at": "1978-04-28 02:35",
-      "content": "qewqf",
-      "id": 6
     }
   ],
   "sessions": [
@@ -118,6 +97,17 @@
         "roleId": 0
       },
       "id": 1
+    },
+    {
+      "hash": "0.87317392773654622928347635024692863225936889648438",
+      "user": {
+        "id": "001",
+        "login": "admin",
+        "password": "admin",
+        "registedAt": "2023-01-01",
+        "roleId": 0
+      },
+      "id": 2
     }
   ]
 }
