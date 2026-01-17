@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 import { Icon } from "../../../../components"
 
-function SpecialPanelContainer({ className, publishedAt, iconButton, margin }) {
+function SpecialPanelContainer({ className, publishedAt, iconButton }) {
   return (
     <div className={className}>
       <div className="published-at">
@@ -10,7 +10,8 @@ function SpecialPanelContainer({ className, publishedAt, iconButton, margin }) {
         {publishedAt}
       </div>
       <div className="buttons">
-        <Icon iconId={iconButton} margin="0 10px 0 0" size="20px" />
+        {iconButton}
+
         <Icon iconId="fa-trash-o" size="20px" />
       </div>
     </div>

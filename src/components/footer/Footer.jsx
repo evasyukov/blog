@@ -1,22 +1,22 @@
-import { useState, useEffect } from "react"
+// import { useState, useEffect } from "react"
 import styled from "styled-components"
 
 function FooterContainer({ className }) {
-  const [temperature, setTemperature] = useState()
-  const [city, setCity] = useState("")
-  const [weather, setWeather] = useState("")
+  // const [temperature, setTemperature] = useState()
+  // const [city, setCity] = useState("")
+  // const [weather, setWeather] = useState("")
 
-  useEffect(() => {
-    fetch(
-      "https://api.openweathermap.org/data/2.5/weather?q=Kemerovo&lang=ru&appid={f7efc03f4aa91872f72107f14dda7aca}"
-    )
-      .then((response) => response.json())
-      .then(({ name, main, weather }) => {
-        setCity(name)
-        setTemperature(Math.round(main.temp))
-        setWeather(weather[0].description.toUpperCase())
-      })
-  }, [])
+  // useEffect(() => {
+  //   fetch(
+  //     "https://api.openweathermap.org/data/2.5/weather?q=Kemerovo&lang=ru&appid={f7efc03f4aa91872f72107f14dda7aca}"
+  //   )
+  //     .then((response) => response.json())
+  //     .then(({ name, main, weather }) => {
+  //       setCity(name)
+  //       setTemperature(Math.round(main.temp))
+  //       setWeather(weather[0].description.toUpperCase())
+  //     })
+  // }, [])
 
   return (
     <div className={className}>
@@ -26,7 +26,7 @@ function FooterContainer({ className }) {
       </div>
 
       <div>
-        <div>
+        {/* <div>
           {city},{" "}
           {new Date().toLocaleString("ru", { day: "numeric", month: "long" })}
         </div>
@@ -34,7 +34,7 @@ function FooterContainer({ className }) {
         <div>
           {temperature}°C <br />
           {weather}
-        </div>
+        </div> */}
       </div>
     </div>
   )

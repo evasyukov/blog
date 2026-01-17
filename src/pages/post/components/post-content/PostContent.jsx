@@ -1,11 +1,15 @@
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
-import { H2 } from "../../../../components"
+
+import { H2, Icon } from "../../../../components"
 import { SpecialPanel } from "../special-panel/SpecialPanel"
 
 function PostContentContainer({
   className,
-  post: { title, imageUrl, content, publishedAt },
+  post: { id, title, imageUrl, content, publishedAt },
 }) {
+  const navigate = useNavigate()
+
   return (
     <div className={className}>
       <img src={imageUrl || null} alt={"fds"} />
@@ -13,9 +17,16 @@ function PostContentContainer({
       <H2>{title}</H2>
 
       <SpecialPanel
-        iconButton="fa-pencil-square-o"
         publishedAt={publishedAt}
         margin="-20px 0 10px"
+        iconButton={
+          <Icon
+            iconId="fa-pencil-square-o"
+            margin="0 10px 0 0"
+            size="20px"
+            onClick={() => navigate(`/post/${id}/edit`)}
+          />
+        }
       />
 
       <div className="post-text">{content}</div>
@@ -35,5 +46,6 @@ export const PostContent = styled(PostContentContainer)`
 
   & .post-text {
     font-size: 18px;
+    white-space: pre-line;  
   }
 `

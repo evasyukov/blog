@@ -1,24 +1,66 @@
+import { useRef } from "react"
+import { useDispatch } from "react-redux"
 import styled from "styled-components"
-import { Input } from "../../../../components"
+import { useNavigate } from "react-router-dom"
 
+import { Input, Icon } from "../../../../components"
 import { SpecialPanel } from "../special-panel/SpecialPanel"
+import { sanitizeContent } from "./utils/sanitize-content/sanitizeContent"
+import { savePostAsync } from "../../../../actions"
+import { useServerRequest } from "../../../../hooks"
 
 function PostFormContainer({
   className,
-  post: { title, imageUrl, content, publishedAt },
+  post: { id, title, imageUrl, content, publishedAt },
 }) {
+  const imageRef = useRef(null)
+  const titleRef = useRef(null)
+  const contentRef = useRef(null)
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const requestServer = useServerRequest()
+
+  function onSave() {
+    const newImageUrl = imageRef.current.value
+    const newTitle = titleRef.current.value
+    const newContent = sanitizeContent(contentRef.current.innerHTML)
+
+    dispatch(
+      savePostAsync(requestServer, {
+        id,
+        imageUrl: newImageUrl,
+        title: newTitle,
+        content: newContent,
+      })
+    ).then(() => navigate(`/post/${id}`))
+  }
+
   return (
     <div className={className}>
-      <Input defaultValue={imageUrl} />
-      <Input defaultValue={title} />
+      <Input
+        defaultValue={imageUrl}
+        placeholder="Изображение..."
+        ref={imageRef}
+      />
+      <Input defaultValue={title} placeholder="Заголовок..." ref={titleRef} />
 
       <SpecialPanel
-        iconButton="fa-floppy-o"
         publishedAt={publishedAt}
         margin="20px 0"
+        iconButton={
+          <Icon
+            iconId="fa-floppy-o"
+            margin="0 10px 0 0"
+            size="20px"
+            onClick={onSave}
+          />
+        }
       />
 
       <div
+        ref={contentRef}
         contentEditable={true}
         suppressContentEditableWarning={true}
         className="post-text"

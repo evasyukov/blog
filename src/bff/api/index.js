@@ -13,4 +13,6 @@ export * from "./getPost"
 export * from "./getComments"
 export * from "./getSession"
 
+export * from "./updatePost"
+
 export * from "./setUserRole"
