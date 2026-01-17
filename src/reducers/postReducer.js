@@ -17,6 +17,9 @@ export function postReducer(state = InitialPostsState, action) {
         ...action.payload,
       }
 
+    case ACTION_TYPE.RESET_POST_DATA:
+      return InitialPostsState
+
     default:
       return state
   }

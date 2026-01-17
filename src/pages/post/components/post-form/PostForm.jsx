@@ -33,7 +33,7 @@ function PostFormContainer({
         imageUrl: newImageUrl,
         title: newTitle,
         content: newContent,
-      })
+      }),
     ).then(() => navigate(`/post/${id}`))
   }
 
@@ -47,6 +47,7 @@ function PostFormContainer({
       <Input defaultValue={title} placeholder="Заголовок..." ref={titleRef} />
 
       <SpecialPanel
+        id={id}
         publishedAt={publishedAt}
         margin="20px 0"
         iconButton={

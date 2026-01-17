@@ -1,8 +1,29 @@
+import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 import { Icon } from "../../../../components"
+import { removePostAsync, openModal, CLOSE_MODAL } from "../../../../actions"
+import { useServerRequest } from "../../../../hooks"
 
-function SpecialPanelContainer({ className, publishedAt, iconButton }) {
+function SpecialPanelContainer({ className, id, publishedAt, iconButton }) {
+  const dispatch = useDispatch()
+  const requestServer = useServerRequest()
+  const navigate = useNavigate()
+
+  function onPostRemove(id) {
+    dispatch(
+      openModal({
+        text: "Удалить статью?",
+        onConfirm: () => {
+          dispatch(removePostAsync(requestServer, id)).then(() => navigate("/"))
+          dispatch(CLOSE_MODAL)
+        },
+        onCancel: () => dispatch(CLOSE_MODAL),
+      }),
+    )
+  }
+
   return (
     <div className={className}>
       <div className="published-at">
@@ -12,7 +33,11 @@ function SpecialPanelContainer({ className, publishedAt, iconButton }) {
       <div className="buttons">
         {iconButton}
 
-        <Icon iconId="fa-trash-o" size="20px" />
+        <Icon
+          iconId="fa-trash-o"
+          size="20px"
+          onClick={() => onPostRemove(id)}
+        />
       </div>
     </div>
   )

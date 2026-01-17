@@ -17,6 +17,7 @@ function PostContentContainer({
       <H2>{title}</H2>
 
       <SpecialPanel
+        id={id}
         publishedAt={publishedAt}
         margin="-20px 0 10px"
         iconButton={
@@ -46,6 +47,6 @@ export const PostContent = styled(PostContentContainer)`
 
   & .post-text {
     font-size: 18px;
-    white-space: pre-line;  
+    white-space: pre-line;
   }
 `
