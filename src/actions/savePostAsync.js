@@ -4,6 +4,7 @@ export function savePostAsync(requestServer, newPostData) {
   return function (dispatch) {
     return requestServer("savePost", newPostData).then((updatedPost) => {
       dispatch(setPostData(updatedPost.response))
+      return updatedPost.response
     })
   }
 }

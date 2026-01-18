@@ -1,6 +1,7 @@
 export * from "./addUser"
 export * from "./addComment"
 export * from "./addSession"
+export * from "./addPost"
 
 export * from "./deleteUser"
 export * from "./deleteComment"

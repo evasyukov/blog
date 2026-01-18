@@ -29,7 +29,7 @@ function CommentContainer({
           dispatch(CLOSE_MODAL)
         },
         onCancel: () => dispatch(CLOSE_MODAL),
-      })
+      }),
     )
   }
 
@@ -38,12 +38,22 @@ function CommentContainer({
       <div className="comment-block">
         <div className="information-panel">
           <div className="author">
-            <Icon iconId="fa-user-circle-o" margin="0 10px 0 0" size="20px" />
+            <Icon
+              inactive={true}
+              iconId="fa-user-circle-o"
+              margin="0 10px 0 0"
+              size="20px"
+            />
 
             {author}
           </div>
           <div className="published-at">
-            <Icon iconId="fa-calendar-o" margin="0 0 0 10px" size="20px" />
+            <Icon
+              inactive={true}
+              iconId="fa-calendar-o"
+              margin="0 0 0 10px"
+              size="20px"
+            />
 
             {publishedAt}
           </div>

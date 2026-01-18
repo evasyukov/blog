@@ -1,6 +1,6 @@
 import { ACTION_TYPE } from "../actions"
 
-const InitialPostsState = {
+const InitialPostState = {
   id: "",
   title: "",
   imageUrl: "",
@@ -9,7 +9,7 @@ const InitialPostsState = {
   comments: [],
 }
 
-export function postReducer(state = InitialPostsState, action) {
+export function postReducer(state = InitialPostState, action) {
   switch (action.type) {
     case ACTION_TYPE.SET_POST_DATA:
       return {
@@ -18,7 +18,7 @@ export function postReducer(state = InitialPostsState, action) {
       }
 
     case ACTION_TYPE.RESET_POST_DATA:
-      return InitialPostsState
+      return InitialPostState
 
     default:
       return state

@@ -57,39 +57,5 @@
     }
   ],
   "comments": [],
-  "sessions": [
-    {
-      "hash": "0.83988968854786238971144030074356123805046081542969",
-      "user": {
-        "id": "001",
-        "login": "admin",
-        "password": "admin",
-        "registedAt": "2023-01-01",
-        "roleId": 0
-      },
-      "id": 1
-    },
-    {
-      "hash": "0.87317392773654622928347635024692863225936889648438",
-      "user": {
-        "id": "001",
-        "login": "admin",
-        "password": "admin",
-        "registedAt": "2023-01-01",
-        "roleId": 0
-      },
-      "id": 2
-    },
-    {
-      "hash": "0.50224519967307934553701898039435036480426788330078",
-      "user": {
-        "id": "001",
-        "login": "admin",
-        "password": "admin",
-        "registedAt": "2023-01-01",
-        "roleId": 0
-      },
-      "id": 3
-    }
-  ]
+  "sessions": []
 }
