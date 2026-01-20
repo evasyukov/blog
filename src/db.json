@@ -56,6 +56,54 @@
       "published_at": "2026-01-01"
     }
   ],
-  "comments": [],
-  "sessions": []
+  "comments": [
+    {
+      "author_id": "001",
+      "post_id": "002",
+      "published_at": "1981-07-02 08:52",
+      "content": "укер",
+      "id": 1
+    },
+    {
+      "author_id": "001",
+      "post_id": "004",
+      "published_at": "1985-09-01 09:11",
+      "content": "кцуп цук",
+      "id": 2
+    },
+    {
+      "author_id": "001",
+      "post_id": "004",
+      "published_at": "1998-03-26 22:07",
+      "content": " цкупцукп цукп",
+      "id": 3
+    },
+    {
+      "author_id": "001",
+      "post_id": "003",
+      "published_at": "1980-01-12 03:15",
+      "content": "цукпцкуп ",
+      "id": 4
+    },
+    {
+      "author_id": "001",
+      "post_id": "003",
+      "published_at": "1992-05-01 07:32",
+      "content": "кцупцукп ",
+      "id": 5
+    }
+  ],
+  "sessions": [
+    {
+      "hash": "0.78038642931064783336836399030289612710475921630859",
+      "user": {
+        "id": "001",
+        "login": "admin",
+        "password": "admin",
+        "registedAt": "2023-01-01",
+        "roleId": 0
+      },
+      "id": 1
+    }
+  ]
 }

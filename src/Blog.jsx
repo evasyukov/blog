@@ -4,7 +4,7 @@ import { useLayoutEffect } from "react"
 import { useDispatch } from "react-redux"
 
 import { Header, Footer, Modal } from "./components"
-import { Authorization, Registration, Users, Post } from "./pages"
+import { Authorization, Registration, Users, Post, Main } from "./pages"
 import { setUser } from "./actions"
 
 const AppColumn = styled.div`
@@ -48,7 +48,7 @@ export default function Blog() {
 
       <Page className="app">
         <Routes>
-          <Route path="/" element={<div>Главная</div>} />
+          <Route path="/" element={<Main />} />
           <Route path="/login" element={<Authorization />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/users" element={<Users />} />

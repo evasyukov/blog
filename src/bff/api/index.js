@@ -12,6 +12,7 @@ export * from "./getUser"
 export * from "./getUsers"
 export * from "./getRoles"
 export * from "./getPost"
+export * from "./getPosts"
 export * from "./getComments"
 export * from "./getSession"
 
