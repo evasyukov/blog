@@ -5,15 +5,17 @@ const Div = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  font-size: 18px;
 `
 
-export function Content({ children, error }) {
-  return error ? (
-    <Div>
-      <H2>Ошибка</H2>
-      <div>{error}</div>
-    </Div>
-  ) : (
-    children
+export function Error({ error }) {
+  return (
+    error && (
+      <Div>
+        <H2>Ошибка</H2>
+        <div>{error}</div>
+      </Div>
+    )
   )
 }
