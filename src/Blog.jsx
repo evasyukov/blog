@@ -12,6 +12,8 @@ const AppColumn = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
+  position: relative;
+
   width: 1000px;
   min-height: 100%;
 
@@ -21,7 +23,7 @@ const AppColumn = styled.div`
 `
 
 const Page = styled.div`
-  padding: 120px 0;
+  padding: 120px 0 0;
 `
 
 export default function Blog() {

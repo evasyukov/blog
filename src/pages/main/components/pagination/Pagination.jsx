@@ -2,7 +2,6 @@ import styled from "styled-components"
 import { Button } from "../../../../components"
 
 function PaginationContainer({ className, page, lastPage, setPage }) {
-
   return (
     <div className={className}>
       <Button disabled={page === 1} onClick={() => setPage(1)}>
@@ -25,6 +24,11 @@ function PaginationContainer({ className, page, lastPage, setPage }) {
 export const Pagination = styled(PaginationContainer)`
   display: flex;
   justify-content: center;
+
+  position: absolute;
+  bottom: 120px;
+
+  width: 100%;
 
   margin: 20px 0;
   padding: 0 35px;
