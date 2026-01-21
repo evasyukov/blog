@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 import { Icon } from "../../../../../../components"
 import { useServerRequest } from "../../../../../../hooks"
@@ -8,6 +8,8 @@ import {
   openModal,
   CLOSE_MODAL,
 } from "../../../../../../actions"
+import { selectUserRole } from "../../../../../../selectors"
+import { ROLE } from "../../../../../../constants"
 
 function CommentContainer({
   className,
@@ -19,6 +21,8 @@ function CommentContainer({
 }) {
   const dispatch = useDispatch()
   const requestServer = useServerRequest()
+
+  const userRole = useSelector(selectUserRole)
 
   function onCommentRemove(id) {
     dispatch(
@@ -33,6 +37,9 @@ function CommentContainer({
     )
   }
 
+  const isAdminOrModerator =
+    userRole === ROLE.ADMIN || userRole === ROLE.MODERATOR
+
   return (
     <div className={className}>
       <div className="comment-block">
@@ -41,8 +48,8 @@ function CommentContainer({
             <Icon
               inactive={true}
               iconId="fa-user-circle-o"
-              margin="0 10px 0 0"
-              size="20px"
+              margin="0 5px 0 0"
+              size="16px"
             />
 
             {author}
@@ -51,8 +58,8 @@ function CommentContainer({
             <Icon
               inactive={true}
               iconId="fa-calendar-o"
-              margin="0 0 0 10px"
-              size="20px"
+              margin="0 10px 0 0"
+              size="16px"
             />
 
             {publishedAt}
@@ -61,12 +68,14 @@ function CommentContainer({
         <div className="comment-text">{content}</div>
       </div>
 
-      <Icon
-        iconId="fa-trash-o"
-        margin="0 0 0 10px"
-        size="20px"
-        onClick={() => onCommentRemove(id)}
-      />
+      {isAdminOrModerator && (
+        <Icon
+          iconId="fa-trash-o"
+          margin="0 0 0 10px"
+          size="20px"
+          onClick={() => onCommentRemove(id)}
+        />
+      )}
     </div>
   )
 }

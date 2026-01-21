@@ -10,6 +10,7 @@ import {
   selectUserSession,
 } from "../../../../selectors"
 import { logout } from "../../../../actions"
+import { checkAccess } from "../../../../utils"
 
 const RightAligned = styled.div`
   display: flex;
@@ -34,6 +35,8 @@ function ControlPanelContainer({ className }) {
     sessionStorage.removeItem("userData")
   }
 
+  const isAdmin = checkAccess([ROLE.ADMIN], roleId)
+
   return (
     <div className={className}>
       <RightAligned>
@@ -48,6 +51,7 @@ function ControlPanelContainer({ className }) {
           </>
         )}
       </RightAligned>
+
       <RightAligned>
         <Icon
           iconId="fa-backward"
@@ -55,15 +59,21 @@ function ControlPanelContainer({ className }) {
           onClick={() => navigate(-1)}
         />
 
-        <Link to="post">
-          <Icon iconId="fa-file-text-o" margin="16px 0 0 16px" />
-        </Link>
-        <Link to="/users">
-          <Icon iconId="fa-users" margin="16px 0 0 16px" />
-        </Link>
+        {isAdmin && (
+          <>
+            <Link to="post">
+              <Icon iconId="fa-file-text-o" margin="16px 0 0 16px" />
+            </Link>
+            <Link to="/users">
+              <Icon iconId="fa-users" margin="16px 0 0 16px" />
+            </Link>
+          </>
+        )}
       </RightAligned>
     </div>
   )
 }
 
-export const ControlPanel = styled(ControlPanelContainer)``
+export const ControlPanel = styled(ControlPanelContainer)`
+  width: 110px;
+`

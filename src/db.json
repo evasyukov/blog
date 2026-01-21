@@ -13,6 +13,13 @@
       "registed_at": "1973-06-02 00:05",
       "role_id": 1,
       "id": "2vrosuq"
+    },
+    {
+      "login": "egorka32",
+      "password": "883322",
+      "registed_at": "1987-03-20 21:46",
+      "role_id": 1,
+      "id": "P8trRC2"
     }
   ],
   "roles": [
@@ -196,6 +203,20 @@
       "published_at": "1992-05-01 07:32",
       "content": "кцупцукп ",
       "id": 5
+    },
+    {
+      "author_id": "P8trRC2",
+      "post_id": "005",
+      "published_at": "1975-05-14 02:27",
+      "content": "ghbdtng ",
+      "id": 6
+    },
+    {
+      "author_id": "P8trRC2",
+      "post_id": "002",
+      "published_at": "1982-12-06 18:40",
+      "content": "ghtbdtn 43",
+      "id": 9
     }
   ],
   "sessions": [
@@ -220,6 +241,17 @@
         "roleId": 0
       },
       "id": 2
+    },
+    {
+      "hash": "0.01771527057961364004512461178819648921489715576172",
+      "user": {
+        "id": "P8trRC2",
+        "login": "egorka32",
+        "password": "883322",
+        "registedAt": "1987-03-20 21:46",
+        "roleId": 1
+      },
+      "id": 3
     }
   ]
 }
