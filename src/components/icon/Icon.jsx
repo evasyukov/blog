@@ -1,5 +1,7 @@
+import PropTypes from "prop-types"
 import styled from "styled-components"
 
+// eslint-disable-next-line no-unused-vars
 function IconContainer({ className, iconId, inactive, ...props }) {
   return (
     <div className={className} {...props}>
@@ -18,3 +20,7 @@ export const Icon = styled(IconContainer)`
     cursor: ${({ inactive }) => (inactive ? "default" : "pointer")};
   }
 `
+Icon.propTypes = {
+  iconId: PropTypes.string.isRequired,
+  inactive: PropTypes.bool,
+}

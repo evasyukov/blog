@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import { H2, Icon } from "../../../../components"
 import { SpecialPanel } from "../special-panel/SpecialPanel"
+import { PROP_TYPE } from "../../../../constants"
 
 function PostContentContainer({
   className,
@@ -50,3 +51,6 @@ export const PostContent = styled(PostContentContainer)`
     white-space: pre-line;
   }
 `
+PostContent.prototype = {
+  post: PROP_TYPE.POST.isRequireds,
+}

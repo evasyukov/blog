@@ -8,6 +8,7 @@ import { SpecialPanel } from "../special-panel/SpecialPanel"
 import { sanitizeContent } from "./utils/sanitize-content/sanitizeContent"
 import { savePostAsync } from "../../../../actions"
 import { useServerRequest } from "../../../../hooks"
+import { PROP_TYPE } from "../../../../constants"
 
 function PostFormContainer({
   className,
@@ -18,6 +19,7 @@ function PostFormContainer({
   const contentRef = useRef(null)
 
   useLayoutEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setImageUrlValue(imageUrl)
     setTitleValue(title)
   }, [imageUrl, title])
@@ -107,3 +109,6 @@ export const PostForm = styled(PostFormContainer)`
     white-space: pre-line;
   }
 `
+PostForm.propTypes = {
+  post: PROP_TYPE.POST.isRequireds,
+}

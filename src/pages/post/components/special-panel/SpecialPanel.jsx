@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
+import PropTypes from "prop-types"
 
 import { Icon } from "../../../../components"
 import { removePostAsync, openModal, CLOSE_MODAL } from "../../../../actions"
@@ -77,3 +78,8 @@ export const SpecialPanel = styled(SpecialPanelContainer)`
     align-items: center;
   }
 `
+SpecialPanel.propTypes = {
+  id: PropTypes.string.isRequired,
+  publishedAt: PropTypes.string.isRequired,
+  iconButton: PropTypes.node.isRequired,
+}
