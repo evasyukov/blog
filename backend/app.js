@@ -176,7 +176,7 @@ app.get("/users/roles", hasRole([ROLES.ADMIN]), async (req, res) => {
 })
 
 // подключение к бд
-mongoose.connect(process.env.DB_CONNECTION_STIRNG).then(() => {
+mongoose.connect(process.env.DB_CONNECTION_STRING).then(() => {
   app.listen(port, () => {
     console.log(`Сервер запущен на порту ${port}`)
   })
