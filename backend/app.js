@@ -74,7 +74,7 @@ app.post("/logout", async (req, res) => {
 })
 
 // получение постов
-app.get("/posts", async (req, res) => {
+app.get("/api/posts", async (req, res) => {
   const { posts, lastPage } = await getPosts(
     req.query.search,
     req.query.limit,
