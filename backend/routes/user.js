@@ -1,59 +1,52 @@
 const express = require("express")
+const router = express.Router()
+
+const authenticated = require("../middlewares/authenticated")
+const hasRole = require("../middlewares/hasRole")
+const ROLES = require("../constants/roles")
 
 const {
   getUsers,
   getRoles,
-  updateUser,
   deleteUser,
+  updateUserRole,
 } = require("../controllers/user")
-
-const hasRole = require("../middlewares/hasRole")
-const authenticated = require("../middlewares/authenticated")
-const ROLES = require("../constants/roles")
 
 const mapUser = require("../helpers/mapUser")
 
-const router = express.Router({ mergeParams: true })
+router.use(authenticated)
+router.use(hasRole([ROLES.ADMIN]))
 
-router.get("/", authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {
+router.get("/", async (req, res) => {
   const users = await getUsers()
 
-  res.send({ data: users.map(mapUser) })
+  res.send({
+    data: users.map(mapUser),
+  })
 })
 
-router.get(
-  "/roles",
-  authenticated,
-  hasRole([ROLES.ADMIN]),
-  async (req, res) => {
-    const roles = getRoles()
+router.patch("/:id", async (req, res) => {
+  const user = await updateUserRole(req.params.id, {
+    role: req.body.roleId,
+  })
 
-    res.send({ data: roles })
-  },
-)
+  res.send({
+    data: mapUser(user),
+  })
+})
 
-router.patch(
-  "/:id",
-  authenticated,
-  hasRole([ROLES.ADMIN]),
-  async (req, res) => {
-    const newUser = await updateUser(req.params.id, {
-      role: req.body.roleId,
-    })
+router.delete("/:id", async (req, res) => {
+  await deleteUser(req.params.id)
 
-    res.send({ data: mapUser(newUser) })
-  },
-)
+  res.send({
+    error: null,
+  })
+})
 
-router.delete(
-  "/:id",
-  authenticated,
-  hasRole([ROLES.ADMIN]),
-  async (req, res) => {
-    await deleteUser(req.params.id)
-
-    res.send({ error: null })
-  },
-)
+router.get("/roles", (req, res) => {
+  res.send({
+    data: getRoles(),
+  })
+})
 
 module.exports = router
