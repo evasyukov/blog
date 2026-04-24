@@ -1,16 +1,16 @@
 FROM node:20
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
 COPY . .
 
-WORKDIR /app/frontend
-RUN npm install
+WORKDIR /usr/src/app/frontend
+RUN npm i
 RUN npm run build
 
-WORKDIR /app/backend
-RUN npm install
+WORKDIR /usr/src/app/backend
+RUN npm i
 
 EXPOSE 3001
 
-CMD ["node", "app.js"]
+CMD [ "node", "app.js" ]
